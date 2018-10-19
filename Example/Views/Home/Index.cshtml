@@ -1,31 +1,255 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<head>
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <!-- <script type="text/javascript">
+         $('body').html("<hl><center>Bonjour &agrave; vous</center></h1>");
+     </script> -->
+    <script type="text/javascript">
+        function coche() {
+            //$("#c2").prop("checked", true);
+            //use class  $(".troize").prop("checked",true);
+            // $(":checkbox")[1].prop("checked", true);
+            // $(":checkbox").eq(1).prop("checked", true);
+            $(form.trois[value = 3]").eq(1).prop("checked", true);
+                   // $("input").prop("checked", true);
+                }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("textarea.erreur").click(function () {
+                $("textarea.erreur").hide();
+            });
+        });
+    </script>
+    <style>        
+        .erreur {
+            border: 2px solid red !important;
+            box-shadow: 6px 6px 0px black !important;
+        }
+        .ok {
+            border: 2px solid green !important;
+            box-shadow: 6px 6px 0px silver !important;
+        }
+  
+    </style>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+</head>
+<body>
+    <h2>USE JQUERY CHECKBOX</h2>
+    <span class="glyphicon" id="timer" style="font-size:48px;color:red; float:right">&#xe233; </span>
+    <span id="timer2" class="ok" style="font-size:36px;color:green; float:right" onclick="stopColor()"> Education  </span>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <form methode"get" action="#" name=" = " f1">
+        <input type="checkbox" id="c1" class="un" value="1">Orange</input><br />
+        <input type="checkbox" id="c2" class="deux" value="2">Pomme</input><br />
+        <input type="checkbox" id="c3" name="Ananas" class="trois" value="3">Ananas</input><br />
+        <input type="button" onclick="coche();" value=" Clique moi fort ! !">
+    </form>
+    <input type="checkbox" id="c3" class="trois" value="3">Mangue</input><br />
+
+    <script type="text/javascript">
+        var i = 0;
+        function Border() {
+
+            i++;
+            if (i < 10) {
+                document.getElementById("timer2").className("erreur");
+            } else {
+                clearInterval(id);
+            }
+        }
+        // ne sera executée qu'une fois
+        setTimeout(function () {
+            document.getElementById("timer2").className("erreur");
+        }, 5000);
+
+        // setinterval exécute le code plusieurs fois, il sera nécessaire de stopper la procédure
+        id = setInterval(Border, 4000);
+    </script>
+
+    <script>
+        var myVar = setInterval(setColor, 300);
+
+        function setColor() {
+            var x = document.getElementById("timer2");
+            x.style.backgroundColor = x.style.backgroundColor == "yellow" ? "pink" : "yellow";
+        }
+
+        function stopColor() {
+            clearInterval(myVar);
+        }
+    </script>
+
+    <div class="jumbotron">
+        <h2>EXAMPLE JAVA SCRIPT</h2>
+        Name <br />  <input type="text" id="info1"> <br />
+        Password <br />
+        <input type="password" id="info2"> <br />
+        <input type="button" class="btn-primary" id="myBtn" onclick="DisplayName(); Password();" value="Valider"></input>
+        <br>
+        <textarea type="text" id="message"> </textarea><br />
+        <input type="button" id="myBtnHidden" value="Hidden message"></input>
+        <br><br>
+        <script>
+
+            function DisplayName() {
+                document.getElementById("message").innerHTML = "Bonjour " + document.getElementById("info1").value + "   ";
+            }
+        </script>
+        <script>
+            function Password() {
+                var passWord = document.getElementById("info2");
+                if (passWord.value == "toto") {
+                    document.getElementById("message").innerHTML += "-- Password is  right";
+                    document.getElementById("message").className = "ok";
+                }
+                else {
+                    document.getElementById("message").innerHTML += "-- Password is not  right";
+                    document.getElementById("message").className = "erreur";
+                }
+            }
+        </script>
+        <h2>VERSION JQUERY</h2>
+        <input type="text" id="t1" placeholder="identifiant"></input><br><br>
+        <input type="password" id="p1"></input><br><br>
+        <input type="button" id="b1" onclick="verif();" value="Identification">
+        <script>
+
+            function verif() {
+                var passWord = document.getElementById("p1");
+                if (passWord.value == "toto") {
+                    document.getElementById("t1").className = "ok";
+                    document.getElementById("p1").className = "ok";
+                } else {
+                    document.getElementById("t1").className = "erreur";
+                    document.getElementById("p1").className = "erreur";
+                }
+            }
+        </script>
+        <h2>VERSION AJAX</h2>
+        <input type="text" id="t1" placeholder="identifiant"></input><br><br>
+        <input type="password" id="p1"></input><br><br>
+        <input type="button" id="b1" onclick="verif1();" value="Identification">
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <script type="text/javascript">
+
+        function verif1() {
+            nom = $('#t1').val();
+            pwd = $('#p1').val();
+            $.ajax({
+                url: 'http://192.168.100.54/traitement.php',
+                type: 'POST',
+                data: 'nom=' + nom + '&pwd=' + pwd,
+                dataType: 'html',
+                success: function (code_html, statut) {
+                    if (code_html == "ok") {
+                        $("#t1").removeClass("erreur");
+                        $("#p1").removeClass("erreur");
+                        $("#t1").addClass("ok");
+                        $("#p1").addClass("ok");
+                    } else {
+                        $("#t1").addClass("erreur");
+                        $("#p1").addClass("erreur");
+                    }
+                },
+                error: function (resultat, statut, erreur) {
+
+                },
+                complete: function (resultat, statut) {
+
+                }
+            });
+
+        }
+        $.ajax({
+            url: "Models/Login",
+            type: 'POST',
+            contentType: 'application/json',
+            data: "url=" + url,
+            success: function (image) {
+                document.getElementById("image").src = "data:image/png;base64," + image;
+                showImage();
+
+            }
+                             data: 'nom=' + nom + '&pwd=' + pwd,
+            dataType: 'html',
+            success: function (code_html, statut) {
+                if (code_html == "ok") {
+                    $("#t1").removeClass("erreur");
+                    $("#p1").removeClass("erreur");
+                    $("#t1").addClass("ok");
+                    $("#p1").addClass("ok");
+                } else {
+                    $("#t1").addClass("erreur");
+                    $("#p1").addClass("erreur");
+                }
+            },
+            error: function (resultat, statut, erreur) {
+
+            },
+            complete: function (resultat, statut) {
+
+            }
+        });
+    </script>
+
+    <img id="image" src="/Image/cascasde.jpg" width="160" height="120">
+    <img id="image" src="/Image/cascasde.jpg" width="160" height="120">
+    <script>
+        document.getElementById("image").src = "/Image/landscape.jpg";
+    </script>
+
+    <h2>The XMLHttpRequest Object</h2>
+
+    <button type="button" onclick="loadDoc()">Get my CD collection</button>
+    <br><br>
+    <table id="demo"></table>
+    <script>
+        <p>The 1eme image was cascasde.jpg, but the script changed it to landscape.jpg</p>
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+            };
+            xhttp.open("GET", "cd_catalog.xml", true);
+            xhttp.send();
+        }
+        function myFunction(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table = "<tr><th>Artist</th><th>Title</th></tr>";
+            var x = xmlDoc.getElementsByTagName("CD");
+            for (i = 0; i < x.length; i++) {
+                table += "<tr><td>" +
+                    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+                    "</td><td>" +
+                    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+                    "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = table;
+        }
+    </script>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>DOM HTML</h2>
+            <p>  </p>
+            <p><a class="btn btn-default" href="https://www.w3schools.com/js/js_htmldom_animate.asp">Lire &raquo;</a></p>
+            <p><a class="btn btn-default" href="https://reactjs.org/">Lire &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Avancer </h2>
+            <p>Jquery</p>
+            <p><a class="btn btn-default" href="#">Lire &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Applications</h2>
+            <p>Ajax</p>
+            <p><a class="btn btn-default" href="https://www.w3schools.com/js/js_ajax_intro.asp">Lire &raquo;</a></p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</body>

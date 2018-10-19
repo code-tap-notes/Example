@@ -20,14 +20,29 @@ namespace Example.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
+            public ApplicationDbContext()
+                : base("Example", throwIfV1Schema: false)
+            {
+            }
+            protected override void OnModelCreating(DbModelBuilder modelBuilder)
+            {
+                base.OnModelCreating(modelBuilder);
+                modelBuilder.Entity<ApplicationUser>().ToTable("Users");
+                modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+                modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
+                modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
+                modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
+            }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
+            public static ApplicationDbContext Create()
+            {
+                return new ApplicationDbContext();
+            }
+
+           
+            public DbSet<Client> Clients { get; set; }
+            public DbSet<Image> Images { get; set; }
+            public DbSet<Commercial> Commercials { get; set; }
+
     }
-}
+    }
